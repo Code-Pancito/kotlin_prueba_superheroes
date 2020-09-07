@@ -1,7 +1,6 @@
 package com.example.kotlin_prueba_superhroes.view
 
-import android.util.Log
-import android.view.Gravity
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import com.example.kotlin_prueba_superhroes.model.db.SuperheroEntity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_superhero.view.*
 
-class SuperheroListAdapter(private var superheroesDataSet: List<SuperheroEntity>):
+class SuperheroListAdapter(private var superheroesDataSet: List<SuperheroEntity>, val onItemClickListener: OnItemClickListener):
     RecyclerView.Adapter<SuperheroListAdapter.SuperheroViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperheroViewHolder {
@@ -46,9 +45,17 @@ class SuperheroListAdapter(private var superheroesDataSet: List<SuperheroEntity>
         notifyDataSetChanged()
     }
 
-    class SuperheroViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class SuperheroViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var superheroName: TextView = itemView.textView_SuperheroName
         var superheroImage: ImageView = itemView.imageView_SuperheroImage
+        var view = itemView.setOnClickListener(this)
+        override fun onClick(p0: View?) {
+            onItemClickListener.onItemClick(superheroesDataSet[adapterPosition])
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(data: SuperheroEntity)
     }
 
 }

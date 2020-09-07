@@ -3,6 +3,7 @@ package com.example.kotlin_prueba_superhroes.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.ArrayList
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SuperheroListAdapter.OnItemClickListener {
 
     private lateinit var superHeroesViewModel: SuperHeroesViewModel
 
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val adapter = SuperheroListAdapter(listOf<SuperheroEntity>())
+        val adapter = SuperheroListAdapter(listOf<SuperheroEntity>(), this)
         recyclerView_SuperheroesList.adapter = adapter
         recyclerView_SuperheroesList.layoutManager = LinearLayoutManager(this)
 
@@ -41,6 +42,10 @@ class MainActivity : AppCompatActivity() {
         })
 
 
+    }
+
+    override fun onItemClick(data: SuperheroEntity) {
+        Toast.makeText(this, data.name, Toast.LENGTH_SHORT).show()
     }
 
 }
