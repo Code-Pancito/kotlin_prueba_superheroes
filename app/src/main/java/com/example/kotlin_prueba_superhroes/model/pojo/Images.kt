@@ -1,4 +1,4 @@
-package com.example.kotlin_prueba_superhroes.pojo
+package com.example.kotlin_prueba_superhroes.model.pojo
 
 data class Images(val xs: String?,
                   val sm: String?,

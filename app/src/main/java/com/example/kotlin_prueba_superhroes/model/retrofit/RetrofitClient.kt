@@ -1,4 +1,4 @@
-package com.example.kotlin_prueba_superhroes.retrofit
+package com.example.kotlin_prueba_superhroes.model.retrofit
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
