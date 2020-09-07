@@ -6,11 +6,14 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_prueba_superhroes.R
+import com.example.kotlin_prueba_superhroes.model.db.SuperheroEntity
 import com.example.kotlin_prueba_superhroes.model.pojo.for_retrofit.Superhero
 import com.example.kotlin_prueba_superhroes.model.retrofit.RetrofitClient
 import com.example.kotlin_prueba_superhroes.model.retrofit.SuperheroesAPI
 import com.example.kotlin_prueba_superhroes.viewmodel.SuperHeroesViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,15 +27,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        val adapter = SuperheroListAdapter(listOf<SuperheroEntity>())
+        recyclerView_SuperheroesList.adapter = adapter
+        recyclerView_SuperheroesList.layoutManager = LinearLayoutManager(this)
+
         superHeroesViewModel = ViewModelProvider(this).get(SuperHeroesViewModel::class.java)
 
         superHeroesViewModel.fetchDataFromServer()
 
         superHeroesViewModel.getAllSuperheroes().observe(this, {
-            if(it.isNotEmpty())
-                Log.d("Main", "size: ${it.size} name: ${it[0].name}")
-            else
-                Log.d("Main", "size: ${it.size}")
+            adapter.updateDataSet(it)
         })
 
 
