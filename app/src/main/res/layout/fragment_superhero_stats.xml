@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlackTransparent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.SuperheroStatsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/colorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView_SuperheroStats_Image"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:padding="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/textView_SuperheroStats_Name"/>
+
+        <TextView
+            android:id="@+id/textView_SuperheroStats_Name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/hello_blank_fragment"
+            android:textColor="@color/colorPrimaryDark"
+            android:paddingTop="12dp"
+            android:paddingRight="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textView_SuperheroStats_Intelligence"
+            app:layout_constraintLeft_toRightOf="@id/imageView_SuperheroStats_Image"/>
+
+        <TextView
+            android:id="@+id/textView_SuperheroStats_Intelligence"
+            android:text="@string/intelligence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="12dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_SuperheroStats_Name"
+            app:layout_constraintBottom_toTopOf="@id/textView_SuperheroStats_Strength"
+            app:layout_constraintLeft_toRightOf="@id/imageView_SuperheroStats_Image"/>
+
+        <TextView
+            android:id="@+id/textView_SuperheroStats_Strength"
+            android:text="@string/strength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="12dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_SuperheroStats_Intelligence"
+            app:layout_constraintBottom_toTopOf="@id/textView_SuperheroStats_Speed"
+            app:layout_constraintLeft_toRightOf="@id/imageView_SuperheroStats_Image"/>
+
+        <TextView
+            android:id="@+id/textView_SuperheroStats_Speed"
+            android:text="@string/speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="12dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_SuperheroStats_Strength"
+            app:layout_constraintBottom_toTopOf="@id/textView_SuperheroStats_Durability"
+            app:layout_constraintLeft_toRightOf="@id/imageView_SuperheroStats_Image"/>
+
+        <TextView
+            android:id="@+id/textView_SuperheroStats_Durability"
+            android:text="@string/durability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="12dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_SuperheroStats_Speed"
+            app:layout_constraintBottom_toTopOf="@id/textView_SuperheroStats_Power"
+            app:layout_constraintLeft_toRightOf="@id/imageView_SuperheroStats_Image"/>
+
+        <TextView
+            android:id="@+id/textView_SuperheroStats_Power"
+            android:text="@string/power"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="12dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_SuperheroStats_Durability"
+            app:layout_constraintBottom_toTopOf="@id/textView_SuperheroStats_Combat"
+            app:layout_constraintLeft_toRightOf="@id/imageView_SuperheroStats_Image"/>
+
+        <TextView
+            android:id="@+id/textView_SuperheroStats_Combat"
+            android:text="@string/combat_1_s"
+            android:paddingBottom="12dp"
+            android:paddingRight="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textView_SuperheroStats_Power"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/imageView_SuperheroStats_Image"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

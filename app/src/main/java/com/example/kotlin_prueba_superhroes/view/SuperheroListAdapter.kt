@@ -48,7 +48,7 @@ class SuperheroListAdapter(private var superheroesDataSet: List<SuperheroEntity>
     inner class SuperheroViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var superheroName: TextView = itemView.textView_SuperheroName
         var superheroImage: ImageView = itemView.imageView_SuperheroImage
-        var view = itemView.setOnClickListener(this)
+        val view = itemView.setOnClickListener(this)
         override fun onClick(p0: View?) {
             onItemClickListener.onItemClick(superheroesDataSet[adapterPosition])
         }

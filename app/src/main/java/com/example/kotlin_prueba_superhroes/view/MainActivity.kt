@@ -1,24 +1,15 @@
 package com.example.kotlin_prueba_superhroes.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_prueba_superhroes.R
 import com.example.kotlin_prueba_superhroes.model.db.SuperheroEntity
-import com.example.kotlin_prueba_superhroes.model.pojo.for_retrofit.Superhero
-import com.example.kotlin_prueba_superhroes.model.retrofit.RetrofitClient
-import com.example.kotlin_prueba_superhroes.model.retrofit.SuperheroesAPI
 import com.example.kotlin_prueba_superhroes.viewmodel.SuperHeroesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.util.ArrayList
+
 
 class MainActivity : AppCompatActivity(), SuperheroListAdapter.OnItemClickListener {
 
@@ -45,7 +36,15 @@ class MainActivity : AppCompatActivity(), SuperheroListAdapter.OnItemClickListen
     }
 
     override fun onItemClick(data: SuperheroEntity) {
-        Toast.makeText(this, data.name, Toast.LENGTH_SHORT).show()
+        superheroStatsIntent(data)
+    }
+
+    private fun superheroStatsIntent(superhero: SuperheroEntity) {
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.frameLayout_SuperheroStats, SuperheroStatsFragment.newInstance(superhero), "SUPERHERO_STATS")
+            .addToBackStack(null)
+            .commit()
     }
 
 }
